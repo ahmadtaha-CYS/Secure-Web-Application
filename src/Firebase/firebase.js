@@ -5,21 +5,22 @@ import { getStorage } from 'firebase/storage';
 import { getDatabase } from "firebase/database"; 
 import { getFunctions } from "firebase/functions"; // Import Functions
 const firebaseConfig = {
-    apiKey: "AIzaSyD2yW5R21l6X5dUfLyq9Fd7U7MwP-IPDQs",
-    authDomain: "websecurity-commerce.firebaseapp.com",
-    projectId: "websecurity-commerce",
-    storageBucket: "websecurity-commerce.firebasestorage.app",
-    messagingSenderId: "992431075252",
-    appId: "1:992431075252:web:4acae0865bfbcb513d8ce1",
-    measurementId: "G-3GQXXRHB2J"
-  };
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
+};
 
+const API_KEY = process.env.REACT_APP_YOUTUBE_API_KEY;
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 const storage = getStorage(app); // Initialize storage
-const API_KEY = "AIzaSyDkeLw_pXFj5za2qaImIt8MnCss09L6Py0"; // Replace with your YouTube Data API key
+const API_KEY = "Your API"; // Replace with your YouTube Data API key
 const realtimeDb = getDatabase(app);
 const functions = getFunctions(app); 
 async function deleteUserData(user) {
