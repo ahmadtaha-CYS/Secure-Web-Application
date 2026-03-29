@@ -1,47 +1,168 @@
-# 🛡️ Secure Web Application
+# 🔐 Secure Web Application
 
-A full-featured, highly secure web application built with **React** and **Firebase**. This project seamlessly integrates e-commerce functionality with robust user account management, role-based access control (RBAC), and multi-layered security protocols. It is designed to provide a modern, interactive user experience while strictly guarding sensitive routes and data.
-
-## ✨ Key Features
-
-* **Multi-Method Authentication:** Supports traditional Email/Password login alongside Google Sign-In, unified under a single user management workflow.
-* **E-Commerce & Gamification:** Includes a fully functional shop interface, cart management, a digital wallet system, and a unique interactive gameplay route.
-* **Role-Based Access Control (RBAC):** Distinct permission levels separate standard users from administrators, with a dedicated, protected Admin Panel.
-* **Modular Architecture:** Built with a clean separation of concerns using React components, Context providers for state management, and utility helpers.
-
-## 🔐 Security & Protection
-
-Security is a primary focus of this project, going far beyond basic login functionality to include practical cybersecurity mechanisms:
-
-* **Mandatory Email Verification:** Account creation does not grant immediate access. Users are blocked from logging in until their email address is fully verified, preventing fake accounts.
-* **Two-Factor Authentication (2FA):** A secondary verification layer requiring a time-sensitive, database-backed code before access is granted.
-* **CSRF Protection:** Generates, stores (via `localStorage` and `sessionStorage`), and validates Cross-Site Request Forgery tokens during login and sensitive requests. Invalid tokens block the request and trigger an automatic regeneration.
-* **Strict Route Guards:** Utilizes React Router to wrap sensitive pages (Shop, Cart, Profile, Gameplay, Admin) in protected route components. These guards verify authentication, session validity, and 2FA status before rendering.
-* **Advanced Session Handling:** Manages active sessions using stored tokens and cookies, complete with automatic timeout logouts and reauthentication flows.
-
-## 🗄️ Architecture & Data Management
-
-### State Management
-A centralized **Authentication Context** handles all security logic, making it highly reusable. It manages:
-* Current user state, roles, and wallet value.
-* Loading states and error handling.
-* Functions for signup, login, logout, Google Auth, password resets, and 2FA verification.
-
-### Database (Firebase Firestore)
-User data is persistently stored and rich in detail, moving beyond simple auth credentials to include:
-* `email` & `name`
-* `role` (User/Admin)
-* `wallet_value` (Account balance logic)
-* `cart_items` (Shopping state)
-* `date_of_birth` & `profile_picture`
-
-## 🛤️ The User Journey
-
-1.  **Onboarding:** A user creates an account and immediately receives a verification email.
-2.  **Verification:** The user clicks the link to verify their identity. (Unverified login attempts are blocked).
-3.  **Authentication:** The user logs in via Email/Password (protected by CSRF validation) or Google Sign-In. 
-4.  **2FA Check:** If enabled, the user is redirected to a secure screen to input their Two-Factor Authentication code.
-5.  **Full Access:** Upon successful verification, the user accesses the protected application to browse the shop, manage their cart, play games, or view their profile.
+A **secure, full-featured web application** built using **React** for the frontend and **Firebase** for authentication and database management.  
+This project focuses on delivering a modern user experience while prioritizing **security, access control, and account protection**.
 
 ---
-*Built with attention to both user experience and modern web security.*
+
+## 🚀 Features
+
+- 🔑 Authentication System (Email/Password + Google Sign-In)
+- 📧 Email Verification Enforcement
+- 🔐 Two-Factor Authentication (2FA)
+- 🛡️ CSRF Protection
+- 👤 User Profiles & Persistent Data
+- 🛒 E-commerce Functionality (Shop & Cart)
+- 🎮 Gameplay Module
+- 🧑‍💼 Admin Panel with Role-Based Access Control
+- 🔒 Protected Routes & Session Management
+
+---
+
+## 🏗️ Architecture Overview
+
+The application is divided into multiple modules:
+
+### 👥 User Module
+- Login, Sign Up, Forgot Password
+- Email verification flow
+- Two-Factor Authentication (2FA)
+- Profile management
+
+### 🛍️ Application Pages
+- Shop
+- Cart
+- Contact Page
+- Gameplay Page
+- User Profile
+
+### 🧑‍💼 Admin Module
+- Dedicated admin panel
+- Role-based access control (RBAC)
+- Restricted routes for authorized users only
+
+---
+
+## 🔐 Security Features
+
+### 1. Authentication & Verification
+- Built with **Firebase Authentication**
+- Email verification required before full access
+- Prevents unverified or fake accounts
+
+### 2. CSRF Protection
+- Tokens generated and validated on requests
+- Stored in `localStorage` and `sessionStorage`
+- Automatically regenerated on mismatch
+
+### 3. Two-Factor Authentication (2FA)
+- Additional verification step after login
+- Code generation with expiration time
+- Secure validation before granting access
+
+### 4. Session Management
+- Tracks active sessions using tokens/cookies
+- Automatic logout after inactivity
+- Continuous validation of authentication state
+
+---
+
+## 🔑 Authentication Flow
+
+1. User signs up  
+2. Email verification is sent  
+3. User verifies email  
+4. User logs in (Email/Password or Google)  
+5. (Optional) 2FA verification  
+6. Access to protected routes is granted  
+
+---
+
+## 🧠 Role-Based Access Control
+
+- Users are assigned roles (e.g., `user`, `admin`)
+- Admins can access:
+  - Admin panel
+  - Restricted functionality
+- Regular users are limited to standard features
+
+---
+
+## 🗄️ Database (Firestore)
+
+Each user document includes:
+
+- Email
+- Name & Profile Info
+- Wallet Balance
+- Cart Items
+- Role (User/Admin)
+- Date of Birth
+- Profile Picture
+
+---
+
+## 🧭 Routing & Navigation
+
+- Built with **React Router**
+- Protected routes enforce:
+  - Authentication
+  - Email verification
+  - 2FA completion
+- Unauthorized access is automatically redirected
+
+---
+
+## ⚙️ State Management
+
+A centralized **Authentication Context** handles:
+
+- Current user state
+- Authentication status
+- Wallet & user data
+- Errors & loading states
+- 2FA requirements
+
+### Provided Functions:
+- Sign Up / Login / Logout
+- Google Sign-In
+- 2FA Verification
+- Password Reset
+- Email Update
+- Wallet Management
+
+---
+
+## 🧩 Tech Stack
+
+- **Frontend:** React  
+- **Routing:** React Router  
+- **Backend Services:** Firebase  
+  - Authentication  
+  - Firestore Database  
+- **Security:** CSRF Tokens, 2FA, Session Handling  
+
+---
+
+## 🎯 Project Highlights
+
+- Combines **e-commerce**, **authentication**, and **security**
+- Implements **real-world security practices**
+- Demonstrates **modular and scalable architecture**
+- Goes beyond a basic CRUD app with:
+  - Multi-step authentication
+  - Role-based access
+  - Protected navigation
+  - Persistent user data
+
+---
+
+## 📌 Summary
+
+This project showcases a **secure, scalable, and modern web application** that integrates:
+
+- Advanced authentication flows  
+- Strong security practices  
+- Clean architecture design  
+
+It highlights both **full-stack development skills** and **cybersecurity awareness**, making it a strong example of a production-style application.
